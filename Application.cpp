@@ -25,6 +25,24 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
+	//~~~~~~~~~~~~ Vertex Buffer
+	/* Make bertex buffer (Triangle test vertex data) */
+	float vertices[9] = {
+		-0.5f, -0.5f, 0.0f,
+		 0.5f, -0.5f, 0.0f,
+		 0.0f,  0.5f, 0.0f
+	};
+
+	/* Declare vertex buffer object */
+	unsigned int VBO;
+	glGenBuffers(1, &VBO);
+
+	/* Bind and set buffer data to gl array buffer target */
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+
+
         /* Rendering loop */
         while (!glfwWindowShouldClose(window))
 	{
