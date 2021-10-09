@@ -41,7 +41,24 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+	//~~~~~~~~~~~~ Vertex Shader
+	/* Right shader script */
+	const char* vertexShaderSource = "#version 330 core\n"
+		"layout(location = 0) in vec3 aPos;\n"
+		"void main()\n"
+		"{\n"
+		" gl_Position = vec4(aPos.x, aPos.y, aPos.z, 0.1)\n"
+		"}\0";
 
+	/* Declare shader object */
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+	/* Set shader source code to be stores in the shader object */
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+
+	/* Compile said vertex shader */
+	glCompileShader(vertexShader);
 
         /* Rendering loop */
         while (!glfwWindowShouldClose(window))
