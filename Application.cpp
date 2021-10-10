@@ -60,6 +60,24 @@ int main()
 	/* Compile said vertex shader */
 	glCompileShader(vertexShader);
 
+	//~~~~~~~~~~~~ Fragment Shader
+	const char* fragmentShaderSource = "version 330 core\n"
+		"out vec4 FragColor;\n"
+		"void main()\n"
+		"{\n"
+		" FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+		"}\0";
+
+	/* Declare fragment shader object */
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+	/* Setting shader source to be held in shader object */
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+
+	/* Compile fragment shader */
+	glCompileShader(fragmentShader);
+
         /* Rendering loop */
         while (!glfwWindowShouldClose(window))
 	{
